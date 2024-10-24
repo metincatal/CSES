@@ -2,47 +2,29 @@
 
 #include <iostream>
 #include <string>
+#include <algorithm>
 #define ll long long
 
 using namespace std;
 
-unsigned ll factoriel(int n) {
-    if (n == 0 || n == 1)
-        return 1;
-    else
-        return n * factoriel(n - 1);
-}
-
 int main(int argc, const char * argv[]) {
-    string n;
-    cin >> n;
+    string a;
+    cin >> a;
     
-    int hashMap[26] = {0}, length = 0;
-    for(char l : n) {
-        hashMap[l - 'a']++;
-        length++;
-    }
+    sort(a.begin(), a.end());
     
-    string t;
-    ll ans_l = factoriel(length);
-    for(int i = 0; i<26; i++)
-        if(hashMap[i] > 0) {
-            ans_l /= factoriel(hashMap[i]);
-            for(int j = 0; j < hashMap[i]; j++)
-                t += hashMap[i] + 'a';
-        }
+    int k = 0;
+    do {
+        k++;
+    } while(next_permutation(a.begin(), a.end()));
     
-    cout << ans_l << endl;
+    cout << k << endl;
     
-    for(int i = 0; i < ans_l; i++) {
-        string ans;
-        for(int j = 0; j < length; j++) {
-            ans += t[j];
-            for(int k = 1; k < length; k++) {
-                
-            }
-        }
-    }
+    do {
+        for(char i : a)
+            cout << i;
+        cout << endl;
+    } while(next_permutation(a.begin(), a.end()));
     
     return 0;
 }
